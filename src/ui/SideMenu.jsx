@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import Spinner from "./Spinner";
 
 const StyledNavLink = styled(NavLink)`
   display: flex;
@@ -14,15 +15,34 @@ const StyledNavLink = styled(NavLink)`
   }
 `;
 
+const SubMenu = styled.ul`
+  display: flex;
+  flex-direction: column; /* Set default flex direction */
+  gap: 3px; /* Set your desired gap */
+  padding-left: 1rem; /* Inherit padding from parent li */
+  margin: 0; /* Remove any margins */
+`;
+
 export default function SideMenu() {
   return (
     <nav className="bg-sideBg min-w-[280px]">
-      <ul className="px-5 py-6 flex flex-col space-y-5 ">
+      <ul className="flex flex-col gap-1 px-5 py-6">
         <li>
           <StyledNavLink to="/dashboard">Dashboard</StyledNavLink>
         </li>
         <li>
           <StyledNavLink to="/assets">Assets</StyledNavLink>
+          <SubMenu>
+            <li>
+              <StyledNavLink to="/" className="my-2">
+                Charge Stations
+              </StyledNavLink>
+              <StyledNavLink to="/" className="mb-2">
+                Charge Points
+              </StyledNavLink>
+              <StyledNavLink to="/assets/log">Charge Logs</StyledNavLink>
+            </li>
+          </SubMenu>
         </li>
         <li>
           <StyledNavLink to="/auctions">Auctions</StyledNavLink>

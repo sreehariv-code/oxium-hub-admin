@@ -6,7 +6,7 @@ export default function PageNotFound() {
     <div className="h-screen bg-bgColor text-primaryText">
       <h1>Sorry, there was no page found</h1>
       <Button>
-        <NavLink to="/">Go back to Dashboard</NavLink>
+        <NavLink to={-1}>Go back </NavLink>
       </Button>
     </div>
   );
