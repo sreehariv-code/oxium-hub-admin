@@ -10,6 +10,8 @@ import PageNotFound from "./ui/PageNotFound";
 import Assets from "./features/assets/Assets";
 import AssetsLogs from "./features/assets/AssetsLogs";
 import Auctions from "./features/auctions/Auctions";
+import ChargePoints from "./features/assets/ChargePoints/ChargePoints";
+import ChargePointDetail from "./features/assets/ChargePoints/ChargePointDetail";
 
 function App() {
   return (
@@ -20,6 +22,13 @@ function App() {
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="assets">
             <Route index element={<Assets />} />
+            <Route path="charge-points">
+              <Route index element={<ChargePoints />} />
+              <Route
+                path="charge-point-details"
+                element={<ChargePointDetail />}
+              />
+            </Route>
             <Route path="log" element={<AssetsLogs />} />
           </Route>
           <Route path="auctions" element={<Auctions />} />

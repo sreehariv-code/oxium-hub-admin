@@ -1,6 +1,7 @@
 import { useState } from "react";
 import StyledModal from "../../ui/Modal";
 import styled from "styled-components";
+import DataTable from "../../ui/DataTable";
 
 const Input = styled.input`
   padding: 0.1rem;
@@ -25,29 +26,7 @@ export default function Dashboard() {
 
   return (
     <div className="pt-8 pl-10">
-      <form
-        action=""
-        className=" max-w-[40%] space-y-7"
-        onSubmit={handleSubmit}
-      >
-        <div className="flex justify-between min-w-max form-control">
-          <label htmlFor="cms_url">Enter CMS Configuration URL</label>
-          <Input type="text" id="cms_url" />
-        </div>
-        <div className="flex justify-between min-w-max form-control">
-          <label htmlFor="cpid">CPID</label>
-          <Input type="text" id="cpid" />
-        </div>
-        <div className="btn-group ">
-          <button
-            className="px-4 py-1 rounded-lg bg-primaryText text-bgColor"
-            type="submit"
-          >
-            Submit
-          </button>
-        </div>
-      </form>
-      <StyledModal open={open} setOpen={setOpen} />
+      <p>Dashboard</p>
     </div>
   );
 }

@@ -9,6 +9,10 @@
   font-family: "Roboto", sans-serif;
 }
 
+html {
+  overflow: hidden;
+}
+
 .loader {
   width: 50px;
   aspect-ratio: 1;

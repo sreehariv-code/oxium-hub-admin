@@ -7,6 +7,7 @@ const StyledNavLink = styled(NavLink)`
   width: 100%;
   padding: 0.5rem 1.5rem;
   border-radius: 0.5rem;
+  font-size: 0.8rem;
   &.active,
   &:hover {
     background-color: #292c2d;
@@ -37,7 +38,7 @@ export default function SideMenu() {
               <StyledNavLink to="/" className="my-2">
                 Charge Stations
               </StyledNavLink>
-              <StyledNavLink to="/" className="mb-2">
+              <StyledNavLink to="/assets/charge-points" className="mb-2">
                 Charge Points
               </StyledNavLink>
               <StyledNavLink to="/assets/log">Charge Logs</StyledNavLink>

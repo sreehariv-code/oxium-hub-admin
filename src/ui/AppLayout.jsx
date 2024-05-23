@@ -5,9 +5,9 @@ import SideMenu from "./SideMenu";
 
 const AppLayout = () => {
   return (
-    <div className="h-screen bg-bgColor text-primaryText flex flex-col">
+    <div className="flex flex-col min-h-screen bg-bgColor text-primaryText">
       <Header />
-      <section className="flex h-full">
+      <section className="flex flex-grow">
         <SideMenu />
         <Main>
           <Outlet />
