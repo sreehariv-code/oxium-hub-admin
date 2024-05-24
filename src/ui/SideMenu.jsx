@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import Spinner from "./Spinner";
+import { useState } from "react";
 
 const StyledNavLink = styled(NavLink)`
   display: flex;
@@ -25,6 +26,7 @@ const SubMenu = styled.ul`
 `;
 
 export default function SideMenu() {
+  const [open, setOpen] = useState(false);
   return (
     <nav className="bg-sideBg min-w-[280px]">
       <ul className="flex flex-col gap-1 px-5 py-6">
@@ -32,9 +34,17 @@ export default function SideMenu() {
           <StyledNavLink to="/dashboard">Dashboard</StyledNavLink>
         </li>
         <li>
-          <StyledNavLink to="/assets">Assets</StyledNavLink>
+          <StyledNavLink onClick={() => setOpen(!open)} to="/assets">
+            Assets
+          </StyledNavLink>
           <SubMenu>
-            <li>
+            <li
+              className={`${
+                open
+                  ? "h-full opacity-1 transition-all duration-250"
+                  : "h-0 opacity-0 pointer-events-none"
+              } `}
+            >
               <StyledNavLink to="/" className="my-2">
                 Charge Stations
               </StyledNavLink>

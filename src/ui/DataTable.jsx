@@ -87,9 +87,9 @@ export default function DataTable() {
               <StyledTableCell>
                 <BpCheckbox />
               </StyledTableCell>
-              {columns.map((column) => (
+              {columns.map((column, index) => (
                 <StyledTableCell
-                  key={column.field}
+                  key={index}
                   color="#A5AFBA"
                   width={column.width}
                 >
