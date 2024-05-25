@@ -12,6 +12,7 @@ import AssetsLogs from "./features/assets/AssetsLogs";
 import Auctions from "./features/auctions/Auctions";
 import ChargePoints from "./features/assets/ChargePoints/ChargePoints";
 import ChargePointDetail from "./features/assets/ChargePoints/ChargePointDetail";
+import ChargeLogs from "./features/assets/ChargePoints/ChargeLogs";
 
 function App() {
   return (
@@ -21,13 +22,13 @@ function App() {
           <Route index element={<Navigate to="dashboard" />} />
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="assets">
-            <Route index element={<Assets />} />
+            <Route index element={<Navigate to="charge-points" />} />
             <Route path="charge-points">
               <Route index element={<ChargePoints />} />
-              <Route
-                path="charge-point-details"
-                element={<ChargePointDetail />}
-              />
+              <Route path="charge-point-details">
+                <Route index element={<ChargePointDetail />} />
+                <Route path="charge-logs" element={<ChargeLogs />} />
+              </Route>
             </Route>
             <Route path="log" element={<AssetsLogs />} />
           </Route>

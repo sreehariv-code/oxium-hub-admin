@@ -1,11 +1,18 @@
 import { ArrowBackIosNew } from "@mui/icons-material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import evStation from "../../../assets/ev-station.svg";
+import filterIcon from "../../../assets/icons/filter.png";
 import StyledModal from "../../../ui/Modal";
 
 import ContentCopyRoundedIcon from "@mui/icons-material/ContentCopyRounded";
 import { formatDate } from "../../../utilities/helpers";
+import { useState } from "react";
+import ModalForm from "../../../ui/ModalForm";
+import Connectors from "../../../ui/Connectors";
+import { Button } from "@mui/material";
+import SearchInput from "../../../ui/SearchInput";
+import EMSPSection from "./EMSPSection";
 
 const today = new Date();
 
@@ -29,6 +36,8 @@ const StyledHeader = styled.header`
   color: #b5b8c5;
   gap: 2px;
   align-items: center;
+  font-weight: 550;
+  letter-spacing: 1px;
 `;
 
 const StyledButton = styled.button`
@@ -42,8 +51,22 @@ const StyledButton = styled.button`
 `;
 
 export default function ChargePointDetail() {
+  const [openModal, setOpenModal] = useState(false);
+  const [openEmsp, setOpenEmsp] = useState(false);
+
+  const navigate = useNavigate();
+
+  function handleClick(event) {
+    setOpenModal(true);
+  }
   return (
-    <div className="flex-grow px-6 pt-6 ">
+    <div className="flex-grow px-6 pt-6 pb-20">
+      {/* {EMSP Modal} */}
+      <ModalForm
+        open={openModal}
+        setOpen={setOpenModal}
+        setOpenEmsp={setOpenEmsp}
+      />
       <header className="flex justify-between">
         <div className="flex gap-5 left font-semibold text-[1.25rem] items-center">
           <Link to={-1}>
@@ -52,19 +75,31 @@ export default function ChargePointDetail() {
           <h1>Charging Point Details</h1>
         </div>
         <div className="flex gap-5">
-          <button className="px-4 py-1 font-[500] tracking-wider text-[12px] text-white rounded-md bg-bgFillSuccess ">
+          <SearchInput />
+          <button>
+            <img src={filterIcon} alt="" />
+          </button>
+          <button
+            onClick={() => navigate("charge-logs")}
+            className="px-4 py-1 font-[500] tracking-wider text-[12px] text-white rounded-md bg-bgFillSuccess "
+          >
             View Charger Logs
           </button>
-          <button className="bg-white px-4 py-1 rounded-md text-[12px] font-[500] text-[#303030] tracking-wider">
-            Add EMSP
-          </button>
+          {!openEmsp && (
+            <button
+              className="bg-white px-4 py-1 rounded-md text-[12px] font-[500] text-[#303030] tracking-wider"
+              onClick={handleClick}
+            >
+              Add EMSP
+            </button>
+          )}
         </div>
       </header>
       <p className="mt-3 text-sideBarText text-[0.75rem]">
         Showing 124 Results
       </p>
-      <StyledModal open={false} />
-      <div className="grid min-h-[533px] grid-cols-5 grid-rows-[repeat(5,minmax(100px,auto))] mt-10 gap-3 relative">
+
+      <div className="grid min-h-[533px] grid-cols-5 grid-rows-[repeat(5,minmax(100px,auto))] mt-10 gap-[20px] relative">
         <div className="col-span-2 row-span-6 bg-[#1C1E1F] rounded-md details">
           <StyledHeader>
             <img src={evStation} alt="" />
@@ -77,9 +112,11 @@ export default function ChargePointDetail() {
                 <input
                   type="text"
                   defaultValue={chargePointDetails.configUrl}
-                  className="bg-[#161616] outline-none"
+                  className="bg-[#161616] outline-none w-full"
                 />
-                <ContentCopyRoundedIcon />
+                <Button sx={{ color: "white", ":hover": { color: "white" } }}>
+                  <ContentCopyRoundedIcon />
+                </Button>
               </div>
               <div className="point-details gap-5 flex flex-col mt-5 text-[14px]">
                 <p className="flex justify-between">
@@ -140,7 +177,7 @@ export default function ChargePointDetail() {
           <StyledHeader>
             <h1>Actions</h1>
           </StyledHeader>
-          <div className="btn-section flex flex-col justify-around flex-1 px-3">
+          <div className="flex flex-col flex-1 px-3 mt-[22px] gap-[25px] btn-section">
             <StyledButton color="white" backgroundColor="#6C3333">
               Hard Reset
             </StyledButton>
@@ -152,16 +189,20 @@ export default function ChargePointDetail() {
             </StyledButton>
           </div>
         </div>
-        <div className="col-span-2 row-span-3 bg-[#1C1E1F] rounded-md connectors">
+        <div className="col-span-2 row-span-3 bg-[#1C1E1F] flex flex-col rounded-md connectors min-h-[300px]">
           <StyledHeader>
             <h1>Connectors</h1>
           </StyledHeader>
+          <div className="flex p-[21px] h-full gap-5">
+            <Connectors />
+            <Connectors />
+          </div>
         </div>
         <div className="col-span-3 row-span-3 rounded-md analytics h-full bg-[#1c1e1f] flex flex-col">
           <StyledHeader>
             <h1>Analytics</h1>
           </StyledHeader>
-          <section className="flex flex-col items-center justify-around  text-center md:flex-row md:text-left flex-grow">
+          <section className="flex flex-col items-center justify-around flex-grow text-center md:flex-row md:text-left">
             <div className="">
               <p className="text-[14px] text-[rgba(255_255_255/0.5)]">
                 Total Charging <br /> sessions
@@ -190,6 +231,9 @@ export default function ChargePointDetail() {
           </section>
         </div>
       </div>
+
+      {/* EMSP Table */}
+      {openEmsp && <EMSPSection />}
     </div>
   );
 }

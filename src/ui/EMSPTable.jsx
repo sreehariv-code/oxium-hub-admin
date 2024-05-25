@@ -12,30 +12,22 @@ import {
   styled,
 } from "@mui/material";
 import { CheckBox, CropSquareOutlined } from "@mui/icons-material";
-import { Link } from "react-router-dom";
-import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
+
+import CopyInput from "./CopyInput";
 
 const columns = [
+  { field: "name", headerName: "Name", width: 250 },
   { field: "id", headerName: "CPID", width: 200 },
-  { field: "chargeStation", headerName: "Charge Station", width: 250 },
-  { field: "hubStatus", headerName: "CP to Hub Status", width: 180 },
-  { field: "hubToCMS", headerName: "Hub To CMS", width: 180 },
+  { field: "status", headerName: "Status", width: 180 },
+  { field: "config_url", headerName: "Configuration URL", width: 400 },
   { field: "action", headerName: "Action", width: 200 },
 ];
 
 const rows = [
   {
     id: "GOEC001",
-    chargeStation: "Lulu Mall",
+    chargeStation: "Charge Zone",
     hubStatus: true,
-    hubToCMS: false,
-    action: "fgpu-cr",
-  },
-  {
-    id: "GOEC002",
-    chargeStation: "Lulu Mall",
-    hubStatus: false,
-    hubToCMS: true,
     action: "fgpu-cr",
   },
 ];
@@ -46,7 +38,6 @@ const StyledTableCell = styled(TableCell)(({ color }) => ({
   width: 10,
   borderTop: "1px solid #161616",
   borderBottom: "1px solid #161616",
-  verticalAlign: "middle",
 }));
 
 const StyledPagination = styled(Pagination)(() => ({
@@ -74,7 +65,7 @@ function BpCheckbox() {
   );
 }
 
-export default function DataTable() {
+export default function EMSPTable() {
   return (
     <div className="pt-10">
       <TableContainer style={{ borderRadius: 10, background: "#222222" }}>
@@ -82,7 +73,7 @@ export default function DataTable() {
           <TableHead
             style={{
               backgroundColor: "#1C1E1F",
-              height: 20,
+              height: 10,
             }}
           >
             <TableRow>
@@ -107,17 +98,16 @@ export default function DataTable() {
                 <StyledTableCell>
                   <BpCheckbox />
                 </StyledTableCell>
+
+                <StyledTableCell>{row.chargeStation}</StyledTableCell>
                 <StyledTableCell>
                   <span className="bg-[#161616] text-[#737373] px-2 py-1 border-2 border-[#616161] hover:border-[#737373] border-dashed rounded-sm">
                     {row.id}
                   </span>
                 </StyledTableCell>
                 <StyledTableCell>
-                  <p className="text-[12px]">{row.chargeStation}</p>
-                </StyledTableCell>
-                <StyledTableCell>
                   <span
-                    className={`w-[65px] rounded-md relative px-3 py-[5px] pl-6 text-[12px]  font-normal before:absolute before:content-['']  before:w-[10px] before:h-[10px] before:left-[7px] before:top-[50%] before:-translate-y-1/2 before:rounded-[3px] ${
+                    className={`w-[65px] rounded-md relative px-3 py-1 pl-6 text-[12px]  font-normal before:absolute before:content-['']  before:w-[10px] before:h-[10px] before:left-[7px] before:top-[50%] before:-translate-y-1/2 before:rounded-[3px] ${
                       row?.hubStatus
                         ? "bg-bgSuccess text-textSuccess before:bg-[#29845A]"
                         : "bg-bgWarning text-textWarning before:bg-[#B28400]"
@@ -127,15 +117,9 @@ export default function DataTable() {
                   </span>
                 </StyledTableCell>
                 <StyledTableCell>
-                  <span
-                    className={`w-[65px] rounded-md relative px-3 py-[5px] pl-6 text-[12px] font-normal before:absolute before:content-['']  before:w-[10px] before:h-[10px] before:left-[7px] before:top-[50%] before:-translate-y-1/2 before:rounded-[3px] ${
-                      row?.hubToCMS
-                        ? "bg-bgSuccess text-textSuccess before:bg-[#29845A]"
-                        : "bg-bgWarning text-textWarning before:bg-[#B28400]"
-                    } `}
-                  >
-                    {row?.hubToCMS ? "Active" : "Inactive"}
-                  </span>
+                  <div className=" max-w-[360px]">
+                    <CopyInput />
+                  </div>
                 </StyledTableCell>
                 <StyledTableCell>
                   <Button
@@ -143,9 +127,7 @@ export default function DataTable() {
                       bgcolor: "white",
                       color: "#303030",
                       textTransform: "none",
-                      borderRadius: "8px",
-                      paddingInline: "8px",
-                      fontSize: "12px",
+                      fontSize: "10px",
                       "&:hover": {
                         bgcolor: "white",
                         color: "#303030",
@@ -153,22 +135,19 @@ export default function DataTable() {
                     }}
                     size="small"
                   >
-                    Copy Configuration Link
+                    Remove
                   </Button>
                 </StyledTableCell>
-                <StyledTableCell width={10}>
-                  <Link to="/assets/charge-points/charge-point-details">
-                    <RemoveRedEyeOutlinedIcon />
-                  </Link>
-                </StyledTableCell>
+                <StyledTableCell width={10} />
               </TableRow>
             ))}
           </TableBody>
         </Table>
-        <div className="flex justify-between px-[15px] py-2 bg-sideBg">
-          <p className="text-sideBarText">Page 1 of 10</p>
+
+        <div className="flex justify-between px-[15px] py-2 bg-sideBg items-center h-[32px] ">
+          <p className="text-sideBarText text-[12px]">Page 1 of 10</p>
           <Stack>
-            <StyledPagination count={10} defaultPage />
+            <StyledPagination count={10} defaultPage={1} />
           </Stack>
         </div>
       </TableContainer>

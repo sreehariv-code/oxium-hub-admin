@@ -1,7 +1,6 @@
-import { NavLink } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 import styled from "styled-components";
-import Spinner from "./Spinner";
-import { useState } from "react";
 
 const StyledNavLink = styled(NavLink)`
   display: flex;
@@ -19,14 +18,28 @@ const StyledNavLink = styled(NavLink)`
 
 const SubMenu = styled.ul`
   display: flex;
-  flex-direction: column; /* Set default flex direction */
-  gap: 3px; /* Set your desired gap */
-  padding-left: 1rem; /* Inherit padding from parent li */
-  margin: 0; /* Remove any margins */
+  flex-direction: column;
+  gap: 3px;
+  padding-left: 1rem;
+  margin: 0;
 `;
 
 export default function SideMenu() {
+  const location = useLocation();
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    const currentPath = location.pathname;
+    console.log(currentPath);
+    if (currentPath.startsWith("/assets")) {
+      setOpen(true);
+    }
+  }, []);
+
+  const toggleSubMenu = () => {
+    setOpen((prevOpen) => !prevOpen);
+  };
+
   return (
     <nav className="bg-sideBg min-w-[280px]">
       <ul className="flex flex-col gap-1 px-5 py-6">
@@ -34,7 +47,7 @@ export default function SideMenu() {
           <StyledNavLink to="/dashboard">Dashboard</StyledNavLink>
         </li>
         <li>
-          <StyledNavLink onClick={() => setOpen(!open)} to="/assets">
+          <StyledNavLink to="/assets" onClick={toggleSubMenu}>
             Assets
           </StyledNavLink>
           <SubMenu>
