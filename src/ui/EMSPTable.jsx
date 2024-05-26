@@ -11,7 +11,11 @@ import {
   TableRow,
   styled,
 } from "@mui/material";
-import { CheckBox, CropSquareOutlined } from "@mui/icons-material";
+import {
+  CheckBox,
+  CopyAllOutlined,
+  CropSquareOutlined,
+} from "@mui/icons-material";
 
 import CopyInput from "./CopyInput";
 
@@ -28,6 +32,7 @@ const rows = [
     id: "GOEC001",
     chargeStation: "Charge Zone",
     hubStatus: true,
+    configurationUrl: "ws://goeccms.numocity.com:9033/ocpp/go1",
     action: "fgpu-cr",
   },
 ];
@@ -101,9 +106,20 @@ export default function EMSPTable() {
 
                 <StyledTableCell>{row.chargeStation}</StyledTableCell>
                 <StyledTableCell>
-                  <span className="bg-[#161616] text-[#737373] px-2 py-1 border-2 border-[#616161] hover:border-[#737373] border-dashed rounded-sm">
-                    {row.id}
-                  </span>
+                  <div className="flex gap-5 items-center">
+                    <span className="bg-[#161616] text-[#737373] px-2 py-1 border-[1px] border-[#616161] hover:border-[#737373]  rounded-md">
+                      {row.id}
+                    </span>
+                    <Button
+                      sx={{
+                        color: "white",
+                        padding: 0,
+                        minWidth: "max-content",
+                      }}
+                    >
+                      <CopyAllOutlined />
+                    </Button>
+                  </div>
                 </StyledTableCell>
                 <StyledTableCell>
                   <span
@@ -117,8 +133,8 @@ export default function EMSPTable() {
                   </span>
                 </StyledTableCell>
                 <StyledTableCell>
-                  <div className=" max-w-[360px]">
-                    <CopyInput />
+                  <div className=" max-w-[360px] text-[#B5B8C5]">
+                    <p>{row?.configurationUrl}</p>
                   </div>
                 </StyledTableCell>
                 <StyledTableCell>

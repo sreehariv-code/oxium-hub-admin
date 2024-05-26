@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import successSvg from "../assets/success.svg";
 import chargeZoneImg from "../assets/chargezone.svg";
 import { Button } from "@mui/material";
+import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 
 export default function ModalForm({ open, setOpen, setOpenEmsp }) {
   const [success, setSuccess] = useState(false);
@@ -17,6 +18,19 @@ export default function ModalForm({ open, setOpen, setOpenEmsp }) {
   }
   return (
     <StyledModal open={open} setOpen={setOpen}>
+      <header className="flex justify-end absolute right-5 top-5">
+        <Button
+          sx={{
+            color: "white",
+            padding: 0,
+            minWidth: 0,
+            maxWidth: "min-content",
+          }}
+          onClick={() => setOpen(false)}
+        >
+          <CloseOutlinedIcon />
+        </Button>
+      </header>
       <div className="p-12">
         {success ? <SuccessLayout /> : <FormLayout onSubmit={handleSubmit} />}
       </div>
@@ -26,32 +40,35 @@ export default function ModalForm({ open, setOpen, setOpenEmsp }) {
 
 function FormLayout({ onSubmit }) {
   return (
-    <div className="min-w-[700px]">
-      <h1 className="font-semibold text-[1.25rem]">Add EMSP</h1>
+    <div className="min-w-[700px] ">
+      <div className="max-w-[600px] mx-auto">
+        <h1 className="font-semibold text-[1.25rem]">Add EMSP</h1>
 
-      <div className="form-container mt-[50px]">
-        <form action="" className="" onSubmit={onSubmit}>
-          <div className="flex items-center gap-6 input-container">
-            <label htmlFor="">Enter CMS Configuration URL</label>
-            <input
-              type="text"
-              className="outline-none px-3 py-1 bg-[#161616] caret-accent w-1/2 border-[1px] border-[#616161] rounded-md"
-            />
-          </div>
-          <div className="text-center btn-section mt-7">
-            <Button
-              type="submit"
-              sx={{
-                backgroundColor: "white",
-                color: "black",
-                textTransform: "none",
-                "&:hover": { backgroundColor: "white", color: "black" },
-              }}
-            >
-              Submit
-            </Button>
-          </div>
-        </form>
+        <div className="form-container mt-[50px] max-w-full">
+          <form action="" className="" onSubmit={onSubmit}>
+            <div className="flex items-center gap-6 input-container min-w-full ">
+              <label htmlFor="">Enter CMS Configuration URL</label>
+              <input
+                type="text"
+                className="outline-none px-3 py-1 bg-[#161616] caret-accent w-1/2 border-[1px] border-[#616161] rounded-md flex-1"
+              />
+            </div>
+            <div className="text-center btn-section mt-7">
+              <Button
+                type="submit"
+                sx={{
+                  paddingInline: 3.5,
+                  backgroundColor: "white",
+                  color: "black",
+                  textTransform: "none",
+                  "&:hover": { backgroundColor: "white", color: "black" },
+                }}
+              >
+                Submit
+              </Button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );

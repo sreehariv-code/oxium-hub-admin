@@ -219,7 +219,7 @@ export default function ChargePointDetail() {
                 43274523
               </p>
             </div>
-            <div className="">
+            {/* <div className="">
               <p className="text-[14px] text-[rgba(255_255_255/0.5)]">
                 Total <br />
                 Revenue (INR)
@@ -227,7 +227,7 @@ export default function ChargePointDetail() {
               <p className="font-bold text-[24px] pl-5 before:content-[''] before:left-0 before:h-full before:w-1 mt-5  relative before:absolute before:bg-accent before:rounded-md">
                 24234345
               </p>
-            </div>
+            </div> */}
           </section>
         </div>
       </div>

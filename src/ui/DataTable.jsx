@@ -11,7 +11,11 @@ import {
   TableRow,
   styled,
 } from "@mui/material";
-import { CheckBox, CropSquareOutlined } from "@mui/icons-material";
+import {
+  CheckBox,
+  CopyAllOutlined,
+  CropSquareOutlined,
+} from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
 
@@ -110,9 +114,20 @@ export default function DataTable() {
                   <BpCheckbox />
                 </StyledTableCell>
                 <StyledTableCell>
-                  <span className="bg-[#161616] text-[#737373] px-2 py-1 border-2 border-[#616161] hover:border-[#737373] border-dashed rounded-sm">
-                    {row.id}
-                  </span>
+                  <div className="flex gap-5 items-center">
+                    <span className="bg-[#161616] text-[#737373] px-2 py-1 border-[1px] border-[#616161] hover:border-[#737373]  rounded-md">
+                      {row.id}
+                    </span>
+                    <Button
+                      sx={{
+                        color: "white",
+                        padding: 0,
+                        minWidth: "max-content",
+                      }}
+                    >
+                      <CopyAllOutlined />
+                    </Button>
+                  </div>
                 </StyledTableCell>
                 <StyledTableCell>
                   <p className="text-[12px]">{row.chargeStation}</p>

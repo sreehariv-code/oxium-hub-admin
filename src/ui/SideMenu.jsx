@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import styled from "styled-components";
+
 import SpaceDashboardOutlinedIcon from "@mui/icons-material/SpaceDashboardOutlined";
 import AirportShuttleOutlinedIcon from "@mui/icons-material/AirportShuttleOutlined";
+import LinkOutlinedIcon from "@mui/icons-material/LinkOutlined";
+import SettingsIcon from "@mui/icons-material/Settings";
 
 const StyledNavLink = styled(NavLink)`
   display: flex;
@@ -45,14 +48,14 @@ export default function SideMenu() {
   };
 
   return (
-    <nav className="bg-sideBg min-w-[280px]">
+    <nav className="bg-sideBg min-w-[280px] flex flex-col justify-between">
       <ul className="flex flex-col gap-1 px-5 py-6">
-        <li>
+        {/* <li>
           <StyledNavLink to="/dashboard">
             <SpaceDashboardOutlinedIcon />
             <span>Dashboard</span>
           </StyledNavLink>
-        </li>
+        </li> */}
         <li>
           <StyledNavLink to="/assets" onClick={toggleSubMenu}>
             <AirportShuttleOutlinedIcon />
@@ -66,19 +69,28 @@ export default function SideMenu() {
                   : "h-0 opacity-0 pointer-events-none"
               } `}
             >
-              <StyledNavLink to="/" className="my-2">
+              {/* <StyledNavLink to="/" className="my-2">
                 Charge Stations
-              </StyledNavLink>
-              <StyledNavLink to="/assets/charge-points" className="mb-2">
+              </StyledNavLink> */}
+              <StyledNavLink to="/assets/charge-points" className="mt-2">
                 Charge Points
               </StyledNavLink>
             </li>
           </SubMenu>
         </li>
-        <li>
-          <StyledNavLink to="/auctions">Auctions</StyledNavLink>
-        </li>
+        {/* <li>
+          <StyledNavLink to="/auctions">
+            <LinkOutlinedIcon />
+            <span>Auctions</span>
+          </StyledNavLink>
+        </li> */}
       </ul>
+      {/* <footer className="pb-2">
+        <div className="px-[20px] py-[13px] flex gap-2">
+          <SettingsIcon />
+          <span>Settings</span>
+        </div>
+      </footer> */}
     </nav>
   );
 }

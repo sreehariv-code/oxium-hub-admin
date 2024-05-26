@@ -59,7 +59,7 @@ const rows = [
   {
     cpid: "g01",
     time: "Nov 16, 2022 7:09:36 AM",
-    command: true,
+    command: false,
     payloadData: `{   "connectorId": 1,   "transactionId": 0,   "meterValue": [     {       "timestamp": "2024-04-25T11:09:10.968Z",       "sampledValue": [         {           "measurand": "Energy.Active.Import.Register",           "value": "401",           "unit": "Wh",           "location": "Outlet",           "context": "Sample.Periodic"         }       ]     },     {       "timestamp": "2024-04-25T11:09:10.968Z",       "sampledValue": [         {           "measurand": "Power.Active.Import",           "value": "4351",           "unit": "W",           "location": "Outlet",           "context": "Sample.Periodic"         }       ]     },     {       "timestamp": "2024-04-25T11:09:10.968Z",       "sampledValue": [         {           "value": "91",           "context": "Sample.Periodic",           "format": "Raw",           "measurand": "SoC",           "location": "EV",           "unit": "Percent"         }       ]     }   ] }`,
     uniqueId: "1668656494-54311937",
   },
