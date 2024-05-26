@@ -1,0 +1,50 @@
+.wrapper {
+  position: relative;
+}
+
+.tooltip {
+  transform: none;
+}
+
+.tooltip:hover > .tooltip-text,
+.tooltip:hover > .wrapper {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.tooltip > .tooltip-text,
+.tooltip > .wrapper {
+  display: block;
+  position: absolute;
+  z-index: 99999; /* Ensure a high z-index */
+  overflow: visible;
+  padding: 12px 8px;
+  top: 30%;
+  width: 100%;
+  line-height: 16px;
+  border-radius: 10px;
+  text-align: left;
+  color: #fff;
+  background: #000;
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.3s ease-out;
+}
+
+/* Invisible area so you can hover over tooltip */
+.tooltip > .tooltip-text:after,
+.tooltip > .wrapper:after {
+  top: -20px;
+  content: " ";
+  display: block;
+  height: 20px;
+  position: absolute;
+  width: 60px;
+  left: 20px;
+}
+
+.wrapper > .tooltip-text {
+  overflow-y: auto;
+  max-height: 40px;
+  display: block;
+}

@@ -42,7 +42,7 @@ const StyledHeader = styled.header`
 
 const StyledButton = styled.button`
   color: ${(props) => props.color || "black"};
-  background-color: ${(props) => props.backgroundColor || "white"};
+  background-color: ${(props) => props.backgroundcolor || "white"};
   padding: 1rem;
   border-radius: 5px;
   &:hover {
@@ -69,7 +69,7 @@ export default function ChargePointDetail() {
       />
       <header className="flex justify-between">
         <div className="flex gap-5 left font-semibold text-[1.25rem] items-center">
-          <Link to={-1}>
+          <Link to="/assets/charge-points">
             <ArrowBackIosNew />
           </Link>
           <h1>Charging Point Details</h1>
@@ -178,13 +178,13 @@ export default function ChargePointDetail() {
             <h1>Actions</h1>
           </StyledHeader>
           <div className="flex flex-col flex-1 px-3 mt-[22px] gap-[25px] btn-section">
-            <StyledButton color="white" backgroundColor="#6C3333">
+            <StyledButton color="white" backgroundcolor="#6C3333">
               Hard Reset
             </StyledButton>
-            <StyledButton color="white" backgroundColor="#885324">
+            <StyledButton color="white" backgroundcolor="#885324">
               Soft Reset
             </StyledButton>
-            <StyledButton color="white" backgroundColor="#26426F">
+            <StyledButton color="white" backgroundcolor="#26426F">
               Clear Cache
             </StyledButton>
           </div>

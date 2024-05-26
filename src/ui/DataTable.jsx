@@ -15,6 +15,7 @@ import { CheckBox, CropSquareOutlined } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
 
+//Data
 const columns = [
   { field: "id", headerName: "CPID", width: 200 },
   { field: "chargeStation", headerName: "Charge Station", width: 250 },
@@ -40,6 +41,7 @@ const rows = [
   },
 ];
 
+//Styled Components
 const StyledTableCell = styled(TableCell)(({ color }) => ({
   color: color || "#A5AFBA",
   padding: 5,
@@ -166,7 +168,7 @@ export default function DataTable() {
           </TableBody>
         </Table>
         <div className="flex justify-between px-[15px] py-2 bg-sideBg">
-          <p className="text-sideBarText">Page 1 of 10</p>
+          <p className="text-sideBarText text-[12px]">Page 1 of 10</p>
           <Stack>
             <StyledPagination count={10} defaultPage />
           </Stack>

@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import styled from "styled-components";
+import SpaceDashboardOutlinedIcon from "@mui/icons-material/SpaceDashboardOutlined";
+import AirportShuttleOutlinedIcon from "@mui/icons-material/AirportShuttleOutlined";
 
 const StyledNavLink = styled(NavLink)`
   display: flex;
@@ -8,6 +10,8 @@ const StyledNavLink = styled(NavLink)`
   padding: 0.5rem 1.5rem;
   border-radius: 0.5rem;
   font-size: 0.8rem;
+  align-items: center;
+  gap: 5px;
   &.active,
   &:hover {
     background-color: #292c2d;
@@ -34,7 +38,7 @@ export default function SideMenu() {
     if (currentPath.startsWith("/assets")) {
       setOpen(true);
     }
-  }, []);
+  }, [location.pathname]);
 
   const toggleSubMenu = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -44,11 +48,15 @@ export default function SideMenu() {
     <nav className="bg-sideBg min-w-[280px]">
       <ul className="flex flex-col gap-1 px-5 py-6">
         <li>
-          <StyledNavLink to="/dashboard">Dashboard</StyledNavLink>
+          <StyledNavLink to="/dashboard">
+            <SpaceDashboardOutlinedIcon />
+            <span>Dashboard</span>
+          </StyledNavLink>
         </li>
         <li>
           <StyledNavLink to="/assets" onClick={toggleSubMenu}>
-            Assets
+            <AirportShuttleOutlinedIcon />
+            <span>Assets</span>
           </StyledNavLink>
           <SubMenu>
             <li
@@ -64,7 +72,6 @@ export default function SideMenu() {
               <StyledNavLink to="/assets/charge-points" className="mb-2">
                 Charge Points
               </StyledNavLink>
-              <StyledNavLink to="/assets/log">Charge Logs</StyledNavLink>
             </li>
           </SubMenu>
         </li>
