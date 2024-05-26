@@ -119,8 +119,17 @@ export default function LogTable() {
               <StyledTableCell />
 
               <StyledTableCell>{row.cpid}</StyledTableCell>
-              <StyledTableCell>{row.time}</StyledTableCell>
-
+              <StyledTableCell>
+                <div style={{ whiteSpace: "pre-line" }}>
+                  {row.time.split(" ")[0] +
+                    " " +
+                    row.time.split(" ")[1] +
+                    " " +
+                    row.time.split(" ")[2]}
+                  {"\n"}
+                  {row.time.split(" ")[3] + " " + row.time.split(" ")[4]}
+                </div>
+              </StyledTableCell>
               <StyledTableCell>
                 <span
                   className={`${

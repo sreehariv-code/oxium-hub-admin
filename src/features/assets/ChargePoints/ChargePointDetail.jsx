@@ -1,4 +1,5 @@
-import { ArrowBackIosNew } from "@mui/icons-material";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import evStation from "../../../assets/ev-station.svg";
@@ -68,9 +69,9 @@ export default function ChargePointDetail() {
         setOpenEmsp={setOpenEmsp}
       />
       <header className="flex justify-between">
-        <div className="flex gap-5 left font-semibold text-[1.25rem] items-center">
+        <div className="flex gap-5 left font-semibold text-[1.5rem] items-center  ">
           <Link to="/assets/charge-points">
-            <ArrowBackIosNew />
+            <ArrowForwardIosIcon className="rotate-180" />
           </Link>
           <h1>Charging Point Details</h1>
         </div>
@@ -202,8 +203,8 @@ export default function ChargePointDetail() {
           <StyledHeader>
             <h1>Analytics</h1>
           </StyledHeader>
-          <section className="flex flex-col items-center justify-around flex-grow text-center md:flex-row md:text-left">
-            <div className="">
+          <section className="flex flex-col items-center flex-grow text-center md:flex-row md:text-left px-[25px] gap-[22px]">
+            <div className="min-w-[174px]">
               <p className="text-[14px] text-[rgba(255_255_255/0.5)]">
                 Total Charging <br /> sessions
               </p>
@@ -211,7 +212,7 @@ export default function ChargePointDetail() {
                 999
               </p>
             </div>
-            <div className="">
+            <div className="min-w-[174px]">
               <p className="text-[14px] text-[rgba(255_255_255/0.5)]">
                 Total units <br /> (kWh)
               </p>

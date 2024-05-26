@@ -24,27 +24,20 @@ export default function ChargeLogs() {
     <div className="px-6 pt-6">
       <header className="flex justify-between">
         <div className="flex bread-crumbs text-[20px] gap-5">
-          <div className="bread-crumb flex gap-5 items-center">
-            <span>
+          <div className="flex items-center gap-5 bread-crumb">
+            <Link to="/assets/charge-points">
               <ArrowForwardIosIcon className="rotate-180" />
-            </span>
-            <Link
-              to="/assets/charge-points/charge-point-details"
-              className="text-[16px]"
-            >
-              Charge Point Details
             </Link>
+            <span className="text-[16px]">Charge Point Details</span>
           </div>
-          <div className="bread-crumb flex gap-5 items-center">
-            <span>
+          <div className="flex items-center gap-5 font-semibold bread-crumb">
+            <Link to="/assets/charge-points/charge-point-details">
               <ArrowForwardIosIcon className="rotate-180" />
-            </span>
-            <Link to="" className="text-[20px]">
-              Charger Logs
             </Link>
+            <span className="text-[20px]">Charger Logs</span>
           </div>
         </div>
-        <div className="search flex gap-5">
+        <div className="flex gap-5 search">
           <SearchInput />
           <button>
             <img src={filterIcon} alt="" />
