@@ -19,7 +19,7 @@ function App() {
     <Router>
       <Routes>
         <Route element={<AppLayout />}>
-          <Route index element={<Navigate to="dashboard" />} />
+          <Route index element={<Navigate to="assets" />} />
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="assets">
             <Route index element={<Navigate to="charge-points" />} />
