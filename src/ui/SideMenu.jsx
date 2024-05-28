@@ -2,11 +2,11 @@ import { useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import styled from "styled-components";
 
+import SpaceDashboardOutlinedIcon from "@mui/icons-material/SpaceDashboardOutlined";
 import AirportShuttleOutlinedIcon from "@mui/icons-material/AirportShuttleOutlined";
 import LinkOutlinedIcon from "@mui/icons-material/LinkOutlined";
 import SettingsIcon from "@mui/icons-material/Settings";
 import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
-import { useData } from "../context/DataContext";
 
 // Styled component for main menu links
 const MainNavLink = styled(NavLink)`
@@ -52,7 +52,6 @@ const SubMenu = styled.ul`
 
 export default function SideMenu() {
   const location = useLocation();
-  const { userType } = useData();
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -61,7 +60,7 @@ export default function SideMenu() {
     if (currentPath.startsWith("/assets")) {
       setOpen(true);
     }
-  }, [location.pathname]);
+  }, []);
 
   const toggleSubMenu = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -70,35 +69,25 @@ export default function SideMenu() {
   return (
     <nav className="bg-sideBg min-w-[280px] flex flex-col justify-between">
       <ul className="flex flex-col gap-1 px-5 py-6">
-        {userType !== "seller" && (
-          <li>
-            <MainNavLink to="/assets" onClick={toggleSubMenu} className="main">
-              <AirportShuttleOutlinedIcon fontSize="small" />
-              <span>Assets</span>
-            </MainNavLink>
-            <SubMenu>
-              <li
-                className={`${
-                  open
-                    ? "h-full opacity-1 transition-all duration-250"
-                    : "h-0 opacity-0 pointer-events-none"
-                } `}
-              >
-                <SubNavLink to="/assets/charge-points" className="mt-2">
-                  Charge Points
-                </SubNavLink>
-              </li>
-            </SubMenu>
-          </li>
-        )}
-        {userType === "seller" && (
-          <li>
-            <MainNavLink to="/assets" onClick={toggleSubMenu} className="main">
-              <AirportShuttleOutlinedIcon fontSize="small" />
-              <span>Assets</span>
-            </MainNavLink>
-          </li>
-        )}
+        <li>
+          <MainNavLink to="/assets" onClick={toggleSubMenu} className="main">
+            <AirportShuttleOutlinedIcon fontSize="small" />
+            <span>Assets</span>
+          </MainNavLink>
+          <SubMenu>
+            <li
+              className={`${
+                open
+                  ? "h-full opacity-1 transition-all duration-250"
+                  : "h-0 opacity-0 pointer-events-none"
+              } `}
+            >
+              <SubNavLink to="/assets/charge-points" className="mt-2">
+                Charge Points
+              </SubNavLink>
+            </li>
+          </SubMenu>
+        </li>
         <li>
           <MainNavLink to="/auctions">
             <LinkOutlinedIcon fontSize="small" />
