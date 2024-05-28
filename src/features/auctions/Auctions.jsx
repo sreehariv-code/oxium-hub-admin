@@ -1,8 +1,10 @@
-import Spinner from "../../ui/Spinner";
+import { useData } from "../../context/DataContext";
 
 export default function Auctions() {
+  const { data } = useData();
+  console.log("context: ", data);
   return (
-    <div className="h-full grid place-items-center">
+    <div className="grid h-full place-items-center">
       <p>Under Development!...</p>
     </div>
   );
