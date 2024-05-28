@@ -2,10 +2,8 @@ import { Avatar, Badge } from "@mui/material";
 import profilePic from "../assets/profile.png";
 import notificationIcon from "../assets/Notification.svg";
 import { green } from "@mui/material/colors";
-import { useData } from "../context/DataContext";
 
 export default function Header() {
-  const { userType } = useData();
   return (
     <header className="flex items-center justify-between px-5 py-3 border-b-2 border-sideBgSelect">
       <h1 className="font-semibold uppercase tracking-widest text-[1.125rem]">
@@ -20,7 +18,7 @@ export default function Header() {
         >
           <img src={notificationIcon} alt="" width={20} />
         </Badge>
-        <p className="capitalize">{userType || "Admin"}</p>
+        <p className="capitalize">Admin</p>
         <Avatar
           sx={{ bgcolor: green[500] }}
           variant="rounded"
