@@ -33,6 +33,7 @@ function App() {
             <Route path="log" element={<AssetsLogs />} />
           </Route>
           <Route path="auctions" element={<Auctions />} />
+          <Route path="bidder" element={<Auctions />} />
         </Route>
         <Route path="*" element={<PageNotFound />} />
       </Routes>
