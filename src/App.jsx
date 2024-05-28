@@ -36,7 +36,7 @@ function App() {
     <Router>
       <Routes>
         <Route element={<AppLayout />}>
-          <Route index element={<Navigate to="assets" />} />
+          <Route index element={<Navigate to="dashboard" />} />
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="assets/*" element={<AssetsRouter />} />
           <Route path="auctions" element={<Auctions />} />

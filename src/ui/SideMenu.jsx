@@ -61,7 +61,7 @@ export default function SideMenu() {
     if (currentPath.startsWith("/assets")) {
       setOpen(true);
     }
-  }, []);
+  }, [location.pathname]);
 
   const toggleSubMenu = () => {
     setOpen((prevOpen) => !prevOpen);
